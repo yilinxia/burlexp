@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
+	import { writable } from "svelte/store";
 	import {
 		SvelteFlow,
 		Controls,
@@ -8,10 +8,10 @@
 		MiniMap,
 		useSvelteFlow,
 		type Node,
-		type Edge
-	} from '@xyflow/svelte';
-	import './tailwind.css';
-	import '@xyflow/svelte/dist/style.css';
+		type Edge,
+	} from "@xyflow/svelte";
+	import "./tailwind.css";
+	import "@xyflow/svelte/dist/style.css";
 
 	// sidebar
 	// import Sidebar from './sidebar.svelte';
@@ -20,7 +20,7 @@
 		event.preventDefault();
 
 		if (event.dataTransfer) {
-			event.dataTransfer.dropEffect = 'move';
+			event.dataTransfer.dropEffect = "move";
 		}
 	};
 
@@ -31,11 +31,11 @@
 			return null;
 		}
 
-		const type = event.dataTransfer.getData('application/svelteflow');
+		const type = event.dataTransfer.getData("application/svelteflow");
 
 		const position = screenToFlowPosition({
 			x: event.clientX,
-			y: event.clientY
+			y: event.clientY,
 		});
 
 		const newNode = {
@@ -43,7 +43,7 @@
 			type,
 			position,
 			data: { label: `${type} node` },
-			origin: [0.5, 0.0]
+			origin: [0.5, 0.0],
 		} satisfies Node;
 
 		$nodes.push(newNode);
@@ -51,24 +51,31 @@
 	};
 
 	// node testing
-	import { colorpicker } from '$lib/nodes/colorpicker';
-	import { slider } from '$lib/nodes/slider';
-	import { option } from '$lib/nodes/option';
-	import {aggregate} from '$lib/nodes/aggregate';
+	import { colorpicker } from "$lib/nodes/colorpicker";
+	import { slider } from "$lib/nodes/slider";
+	import { option } from "$lib/nodes/option";
+	import { aggregate } from "$lib/nodes/aggregate";
 
 	const nodeTypes = {
 		colorpicker: colorpicker,
 		slider: slider,
 		option: option,
-		aggregate: aggregate
+		aggregate: aggregate,
 	};
-	import { initialNodes, initialEdges } from './test_node';
+	import { initialNodes, initialEdges } from "./test_node";
 	const nodes = writable<Node[]>(initialNodes);
 	const edges = writable<Edge[]>(initialEdges);
 </script>
 
 <main>
-	<SvelteFlow {nodes} {nodeTypes} {edges} fitView on:dragover={onDragOver} on:drop={onDrop}>
+	<SvelteFlow
+		{nodes}
+		{nodeTypes}
+		{edges}
+		fitView
+		on:dragover={onDragOver}
+		on:drop={onDrop}
+	>
 		<Controls />
 		<Background variant={BackgroundVariant.Dots} />
 		<MiniMap height={80} width={90} />

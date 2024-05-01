@@ -27,7 +27,7 @@ export const initialNodes: Node[] = [
     position: { x: 0, y: 125 },
     data: {
       label: 'shape type',
-      shape: "sphere",
+      shape: "cylinder",
       options: ['cube', 'sphere', 'cylinder']
     },
   },
