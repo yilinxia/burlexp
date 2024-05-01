@@ -21,7 +21,7 @@
 	$: updateNodeData(id, { shape: shape });
 </script>
 
-<NodeWrapper {label}>
+<NodeWrapper {id} {label}>
 	<Handle type="source" position={Position.Right} />
 	<div class="flex flex-col nodrag">
 		{#each options as option}

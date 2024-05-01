@@ -51,16 +51,16 @@
 	};
 
 	// node testing
-	import { colorpicker } from "$lib/nodes/colorpicker";
-	import { slider } from "$lib/nodes/slider";
-	import { option } from "$lib/nodes/option";
-	import { aggregate } from "$lib/nodes/aggregate";
+	import { colorpicker } from "$lib/nodes";
+	import { slider } from "$lib/nodes";
+	import { option } from "$lib/nodes";
+	// import { aggregate } from "$lib/nodes";
 
 	const nodeTypes = {
 		colorpicker: colorpicker,
 		slider: slider,
 		option: option,
-		aggregate: aggregate,
+		// aggregate: aggregate,
 	};
 	import { initialNodes, initialEdges } from "./test_node";
 	const nodes = writable<Node[]>(initialNodes);
